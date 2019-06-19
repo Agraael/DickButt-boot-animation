@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Dick
+Description=Wallpaper only
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/dick
+ScriptFile=/usr/share/plymouth/themes/dick/dick.script

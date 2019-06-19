@@ -1,0 +1,36 @@
+wallpaper_image = Image("font.png");
+screen_width = Window.GetWidth();
+screen_height = Window.GetHeight();
+resized_wallpaper_image = wallpaper_image.Scale(screen_width,screen_height);
+# wallpaper_sprite = Sprite(resized_wallpaper_image);
+# wallpaper_sprite.SetZ(-100);
+
+Window.SetBackgroundTopColor (0.089, 0.085, 0.097); # coulaur de base 8.6 % 8.2 % 9.4 %
+Window.SetBackgroundBottomColor (0.089, 0.085, 0.097);
+
+indexnum = 1;
+while (1){
+    frame_image[indexnum] = ImageNew("loading"+ indexnum +".png");
+    if (!frame_image[indexnum]) break;
+       indexnum++;
+}
+
+frame_count = indexnum + 1;
+frame_index = 1;
+dick_sprite = SpriteNew();
+
+i = 1;
+index = 1;
+fun refresh_callback (){
+   if (index == 100) index = 1;
+   SpriteSetImage (dick_sprite, frame_image[index++]);
+   SpriteSetX(dick_sprite, (screen_width / 2) - 238 - 5);
+   SpriteSetY(dick_sprite, (screen_height / 2) - 161 + 30);
+   SpriteSetZ(dick_sprite, 1)
+}
+
+Plymouth.SetQuitFunction(quit_callback);
+
+if (Plymouth.GetMode() != "suspend" && Plymouth.GetMode() != "resume") {
+  Plymouth.SetRefreshFunction (refresh_callback);
+}
